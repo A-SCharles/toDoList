@@ -20,14 +20,9 @@ input[type=checkbox] {
     display: none !important;
 }
 
-li+span{
-    text-align: center !important;
-}
-
 li:hover input[type=checkbox] {
     display: block !important;
 }
-
 
 li:hover i {
     display: block !important;
