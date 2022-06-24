@@ -1,0 +1,9 @@
+.row {
+min-height: 95vh;
+}
+
+#list {
+text-align: center;
+list-style: none;
+min-height: 60px;
+}
