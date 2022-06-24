@@ -8,6 +8,10 @@ list-style: none;
 min-height: 300px;
 }
 
+i {
+    display: none !important;
+} 
+
 i:hover {
 color: #0080ff !important;
 }
@@ -15,3 +19,16 @@ color: #0080ff !important;
 /* #completed {
     text-decoration: line-through;
 } */
+
+input[type=checkbox] {
+display: none;
+}
+
+li:hover input[type=checkbox]{
+    display: block;
+}
+
+
+li:hover i{
+    display: block !important;
+}
