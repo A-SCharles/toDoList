@@ -12,6 +12,7 @@ let lists = JSON.parse(localStorage.getItem("list") || "[]");
 function addItem() {
   // e.preventDefault();
   lists.push({
+    item: lists.length - 1 + 1,
     task: document.getElementById("add").value,
     createdDate: new Date(),
     completed: false,
@@ -26,22 +27,21 @@ document.querySelector("#btnAdd").addEventListener("click", addItem);
 // ======================================================================
 // loads Data from array
 function loadData() {
-  console.table(lists);
   display.innerHTML = "";
-  lists.forEach((item) => {
+  lists.forEach((item, index) => {
     display.innerHTML += `
-          <li id="completed" class="d-flex justify-content-between border-bottom border-3 mb-3">
-          <input class="form-check-input me-1" type="checkbox" id="complete">
-          ${item.task}
-          <i class="btn fa-solid fa-trash-can" id="delete"></i>
-          </li>
-          `;
+    <li id="${index}" class="d-flex justify-content-between border-bottom border-3 mb-3">
+    <input class="bruh form-check-input me-1" type="checkbox" onchange="completed(${index})" id="complete">
+    <span>
+    ${item.task}
+    </span>
+    <i onclick="deleteItem(${index})" class="btn fa-solid fa-trash-can"></i>
+    </li>
+    `;
   });
+  console.table(lists);
 }
 loadData();
-// ======================================================================
-
-// UPDATE
 // ======================================================================
 
 // SORT
@@ -59,30 +59,25 @@ document.querySelector("#btnSort").addEventListener("click", () => {
     }
     return 0;
   });
-  display.innerHTML = "";
-  lists.forEach((item) => {
-    display.innerHTML += `
-          <li id="completed" class="d-flex justify-content-between border-bottom border-3 mb-3">
-          <input class="form-check-input me-1" type="checkbox" id="complete">
-          ${item.task}
-          <i class="btn fa-solid fa-trash-can"></i>
-          </li>
-          `;
-  });
+  loadData();
 });
 
 // DELETE
-// // ======================================================================
-// let btnDelete = document.querySelector("#delete").addEventListener('click', deleteItem);
+// ======================================================================
+function deleteItem(id) {
+  if (id > -1) {
+    lists.splice(id, 1);
+    // Apply the change
+    localStorage.setItem("list", JSON.stringify(lists));
+  }
+  loadData();
+}
 
-// function deleteItem(event) {
-//   lists.forEach((item) => {
-//     alert(event.parentNode.children[1])
-//     if (item.task === event.parentNode[0].value) {
-//       // delete task
-//       item.splice(item.indexOf(task), 1);
-//     }
-//   });
-//   localStorage.setItem("list", JSON.stringify(lists));
-//   // event.parentElement.remove();
-// }
+function completed(id) {
+    lists[id].completed = true
+    // Apply the change
+    localStorage.setItem("list", JSON.stringify(lists));
+  }
+  loadData();
+
+console.log(lists[0].task)

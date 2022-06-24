@@ -1,34 +1,38 @@
 .row {
-min-height: 95vh;
+    min-height: 95vh;
 }
 
 #list {
-text-align: center;
-list-style: none;
-min-height: 300px;
+    text-align: center;
+    list-style: none;
+    min-height: 300px;
 }
 
 i {
     display: none !important;
-} 
+}
 
 i:hover {
-color: #0080ff !important;
+    color: #0080ff !important;
 }
-
-/* #completed {
-    text-decoration: line-through;
-} */
 
 input[type=checkbox] {
-display: none;
+    display: none !important;
 }
 
-li:hover input[type=checkbox]{
-    display: block;
+li+span{
+    text-align: center !important;
 }
 
-
-li:hover i{
+li:hover input[type=checkbox] {
     display: block !important;
+}
+
+
+li:hover i {
+    display: block !important;
+}
+
+.bruh:checked+span{
+    text-decoration: line-through;
 }
