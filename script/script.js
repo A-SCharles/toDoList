@@ -29,7 +29,7 @@ function loadData() {
   lists.forEach((item, index) => {
     display.innerHTML += `
     <li id="${index}" class="d-flex justify-content-between border-bottom border-3 mb-3">
-    <input class="bruh form-check-input me-1" type="checkbox" onchange="completed(${index})" id="complete">
+    <input class="bruh form-check-input me-1" type="checkbox" onchange="completed(${index})" id="complete${index}">
     <span id="test">
     ${item.task}
     </span>
@@ -76,22 +76,20 @@ document.getElementById('Reset').addEventListener('click', () => {
 })
 // ======================================================================
 
+const chkcheck = document.getElementById('complete')
+
 // Unnecessary stuff
 function completed(id) {
   lists[id].completed = true
   localStorage.setItem("list", JSON.stringify(lists));
 }
 
-// for (let i = 0; i <= lists.length; i++) {
-//   if (lists[i].completed == true) {
-//     document.getElementById('test').style = `text-decoration: line-through`;
-//     document.getElementById('complete').checked = true;
-//   }
-// }
+for (let i = 0; i < lists.length; i++) {
+  console.log(lists[i].completed)
+  if(lists[i].completed === true ){
+    document.getElementById('complete'+ i).checked = true;
 
-// lists.forEach((item, index) => {
-//   if (item[0].completed === true) {
-//     document.getElementById('test').style = `text-decoration: line-through`;
-//     document.getElementById('complete').checked = true;
-//   }
-// });
+  }
+}
+
+// if ()

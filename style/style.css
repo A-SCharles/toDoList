@@ -16,7 +16,8 @@ body {
 }
 
 i {
-    display: none !important;
+    /* display: none !important; */
+    opacity: 0;
 }
 
 i:hover {
@@ -24,15 +25,18 @@ i:hover {
 }
 
 input[type=checkbox] {
-    display: none !important;
+    /* display: none !important; */
+    opacity: 0;
 }
 
 li:hover input[type=checkbox] {
-    display: block !important;
+    /* display: block !important; */
+    opacity: 1;
 }
 
 li:hover i {
-    display: block !important;
+    /* display: block !important; */
+    opacity: 1 !important;
 }
 
 .bruh:checked+span{
