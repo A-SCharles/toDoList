@@ -25,13 +25,6 @@ document.querySelector("#btnAdd").addEventListener("click", addItem);
 // READ
 // loads Data from array
 function loadData() {
-  // let getLocalStorage = localStorage.getItem("list");
-  //   if (getLocalStorage == null) {
-  //       lists = []; // create blank array
-  //   } else {
-  //       lists = JSON.parse(getLocalStorage);
-  //   }
-
   display.innerHTML = "";
   lists.forEach((item, index) => {
     display.innerHTML += `
@@ -71,7 +64,6 @@ document.querySelector("#btnSort").addEventListener("click", () => {
 function deleteItem(id) {
   if (id > -1) {
     lists.splice(id, 1);
-    // Apply the change
     localStorage.setItem("list", JSON.stringify(lists));
   }
   loadData();
@@ -87,13 +79,19 @@ document.getElementById('Reset').addEventListener('click', () => {
 // Unnecessary stuff
 function completed(id) {
   lists[id].completed = true
-  // Apply the change
   localStorage.setItem("list", JSON.stringify(lists));
 }
 
-for (let i = 0; i < lists.length; i++){
-if (lists[i].completed == true) {
-  document.getElementById('test').style = `text-decoration: line-through`;
-  document.getElementById('complete').checked = true;
-}
-}
+// for (let i = 0; i <= lists.length; i++) {
+//   if (lists[i].completed == true) {
+//     document.getElementById('test').style = `text-decoration: line-through`;
+//     document.getElementById('complete').checked = true;
+//   }
+// }
+
+// lists.forEach((item, index) => {
+//   if (item[0].completed === true) {
+//     document.getElementById('test').style = `text-decoration: line-through`;
+//     document.getElementById('complete').checked = true;
+//   }
+// });
