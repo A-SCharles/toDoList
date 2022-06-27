@@ -37,6 +37,12 @@ function loadData() {
     </li>
     `;
   });
+  // Checks if true values exist and adds line-through to it 
+  for (let i = 0; i < lists.length; i++) {
+    if (lists[i].completed === true) {
+      document.getElementById('complete' + i).checked = true;
+    }
+  }
   console.table(lists);
 }
 loadData();
@@ -76,20 +82,18 @@ document.getElementById('Reset').addEventListener('click', () => {
 })
 // ======================================================================
 
-const chkcheck = document.getElementById('complete')
-
 // Unnecessary stuff
+// basically, makes check and uncheck work
 function completed(id) {
-  lists[id].completed = true
-  localStorage.setItem("list", JSON.stringify(lists));
-}
-
-for (let i = 0; i < lists.length; i++) {
-  console.log(lists[i].completed)
-  if(lists[i].completed === true ){
-    document.getElementById('complete'+ i).checked = true;
-
+  for (let i = 0; i < lists.length; i++) {
+    const chkcheck = document.getElementById('complete' + i)
+    if (chkcheck.checked == true) {
+      lists[id].completed = true
+      localStorage.setItem("list", JSON.stringify(lists));
+    } else if (chkcheck.checked == false) {
+      lists[id].completed = false
+      localStorage.setItem("list", JSON.stringify(lists));
+    }
   }
+  console.table(lists)
 }
-
-// if ()

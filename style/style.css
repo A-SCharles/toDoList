@@ -16,7 +16,6 @@ body {
 }
 
 i {
-    /* display: none !important; */
     opacity: 0;
 }
 
@@ -25,17 +24,14 @@ i:hover {
 }
 
 input[type=checkbox] {
-    /* display: none !important; */
     opacity: 0;
 }
 
 li:hover input[type=checkbox] {
-    /* display: block !important; */
     opacity: 1;
 }
 
 li:hover i {
-    /* display: block !important; */
     opacity: 1 !important;
 }
 
